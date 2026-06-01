@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <title>Create Certificate — Summit Securities</title>
+  <link rel="stylesheet" href="css/styles.css"/>
+  <link rel="stylesheet" href="css/certificate.css"/>
+  <link rel="icon" href="assets/monogram.png"/>
+</head>
+<body>
+  <!-- Topbar -->
+  <header class="topbar">
+    <div class="brand">
+      <img src="assets/logo.png" alt="Summit Securities"/>
+      <span class="brand-sep"></span>
+      <span class="brand-sub">Certificate Portal</span>
+    </div>
+    <nav>
+      <a href="index.html" class="active">Create</a>
+      <a href="verify.html">Verify</a>
+    </nav>
+  </header>
+
+  <main class="page">
+    <div class="page-header">
+      <h1>Create a certificate</h1>
+      <p>The preview updates live. Download a print-ready PDF or image when you're done.</p>
+    </div>
+
+    <div class="gen-layout">
+      <!-- ── Form ── -->
+      <div class="sidebar">
+
+        <section class="card">
+          <div class="seg-label">Certificate type</div>
+          <div class="type-pills">
+            <button class="type-pill active" data-type="payout">Withdrawal</button>
+            <button class="type-pill" data-type="trade">Trade</button>
+            <button class="type-pill" data-type="crypto">Crypto</button>
+          </div>
+          <input type="hidden" id="f-type" value="payout"/>
+
+          <div class="divider"></div>
+
+          <div class="field">
+            <label for="f-name">Recipient name</label>
+            <input id="f-name" type="text" placeholder="Jordan Mitchell" autocomplete="off"/>
+          </div>
+          <div class="row">
+            <div class="field" style="flex:2">
+              <label for="f-amount">Amount</label>
+              <input id="f-amount" type="text" placeholder="25,000"/>
+            </div>
+            <div class="field" style="flex:1">
+              <label for="f-currency">Currency</label>
+              <select id="f-currency">
+                <option value="USD">USD $</option>
+                <option value="EUR">EUR €</option>
+                <option value="GBP">GBP £</option>
+                <option value="AUD">AUD $</option>
+                <option value="CAD">CAD $</option>
+              </select>
+            </div>
+          </div>
+          <div class="field">
+            <label for="f-date">Date of issue</label>
+            <input id="f-date" type="date"/>
+          </div>
+          <div class="field">
+            <label for="f-note">Note <span class="label-opt">optional</span></label>
+            <input id="f-note" type="text" placeholder="First Funded Trade · ≈ 0.45 BTC"/>
+          </div>
+
+          <div class="divider"></div>
+
+          <div class="seg-label">Verification code</div>
+          <div class="code-row">
+            <div id="code-display" class="code-chip">—</div>
+            <button id="btn-regen" class="icon-btn" title="Generate a new code" aria-label="Regenerate code">↻</button>
+          </div>
+          <p class="hint">Printed on the certificate and used for public verification.</p>
+        </section>
+
+        <section class="card">
+          <div class="seg-label">Download</div>
+          <div class="actions-bar">
+            <button id="btn-pdf" class="action-btn action-btn-primary">Download PDF</button>
+            <button id="btn-png" class="action-btn action-btn-secondary">Download image (PNG)</button>
+          </div>
+
+          <div class="divider"></div>
+
+          <div class="seg-label">Verification registry <span class="count" id="reg-count">0</span></div>
+          <p class="hint" style="margin-bottom:14px">
+            Add a certificate, export <code>certificates.json</code>, then commit it to GitHub to make the code publicly verifiable.
+          </p>
+          <div class="btn-group">
+            <button id="btn-issue" class="btn btn-ghost btn-block">Add to registry</button>
+            <button id="btn-export" class="btn btn-ghost btn-block">Export JSON</button>
+          </div>
+          <div id="recent"></div>
+        </section>
+
+      </div><!-- /sidebar -->
+
+      <!-- ── Preview ── -->
+      <div class="preview-area">
+        <div id="toast" class="toast"></div>
+        <div class="preview-stage" id="preview">
+          <div class="preview-scaler" id="scaler"></div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer class="footer">Summit Securities · Certificate Portal · <a href="verify.html">Public verification</a></footer>
+
+  <!-- Libraries -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+  <script src="js/config.js"></script>
+  <script src="js/certificate.js"></script>
+  <script src="js/generator.js"></script>
+</body>
+</html>

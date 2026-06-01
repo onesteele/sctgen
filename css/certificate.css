@@ -1,0 +1,232 @@
+/* =======================================================================
+   Summit Securities — Certificate
+   Dark graphite → fog-white gradient. SF Pro / Inter. Apple-grade restraint.
+   Canvas: 1100 × 760px   Export: 3× → 3300 × 2280px
+   ======================================================================= */
+
+.certificate {
+  --ink:    #f6f7f9;   /* primary text (fog white) */
+  --ink-2:  #c3c7cf;   /* secondary (silver)       */
+  --ink-3:  #888d97;   /* tertiary / muted         */
+  --hair:   rgba(255,255,255,0.16);
+  --hair-2: rgba(255,255,255,0.07);
+
+  width: 1100px;
+  height: 760px;
+  position: relative;
+  box-sizing: border-box;
+  overflow: hidden;
+  color: var(--ink);
+  font-family: "SF Pro Display", -apple-system, BlinkMacSystemFont, "Inter", system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+
+  /* deep graphite, with a soft fog-white light blooming from the top */
+  background:
+    radial-gradient(95% 70% at 50% -8%, rgba(255,255,255,0.13) 0%, rgba(255,255,255,0) 58%),
+    linear-gradient(157deg, #3a3d44 0%, #2b2e34 38%, #202329 70%, #181a1e 100%);
+}
+
+/* faint diagonal sheen */
+.certificate::before {
+  content: "";
+  position: absolute; inset: 0;
+  background: linear-gradient(122deg, transparent 0%, rgba(255,255,255,0.05) 34%, transparent 50%);
+  pointer-events: none;
+}
+
+/* ── Outer frame ── */
+.cert-border {
+  position: absolute;
+  inset: 24px;
+  border: 1px solid var(--hair);
+  border-radius: 6px;
+  box-sizing: border-box;
+  pointer-events: none;
+}
+/* inner hairline for a fine double-rule */
+.cert-border::after {
+  content: "";
+  position: absolute; inset: 5px;
+  border: 1px solid var(--hair-2);
+  border-radius: 3px;
+}
+
+/* ── Corner ticks ── */
+.corner {
+  position: absolute;
+  width: 16px; height: 16px;
+  border-color: rgba(255,255,255,0.4);
+  border-style: solid;
+  z-index: 3;
+}
+.corner.tl { top: 17px;    left: 17px;    border-width: 1.5px 0 0 1.5px; }
+.corner.tr { top: 17px;    right: 17px;   border-width: 1.5px 1.5px 0 0; }
+.corner.bl { bottom: 17px; left: 17px;    border-width: 0 0 1.5px 1.5px; }
+.corner.br { bottom: 17px; right: 17px;   border-width: 0 1.5px 1.5px 0; }
+
+/* ── Watermark (subtle centered emblem, not bleeding text) ── */
+.cert-watermark {
+  position: absolute; inset: 0;
+  display: flex; align-items: center; justify-content: center;
+  pointer-events: none; user-select: none;
+}
+.cert-watermark img {
+  width: 360px; height: 360px;
+  object-fit: contain;
+  opacity: 0.035;
+}
+
+/* ── Security seal (top-right) ── */
+.cert-seal {
+  position: absolute;
+  top: 40px; right: 52px;
+  width: 92px; height: 92px;
+  z-index: 4;
+}
+.cert-seal .seal {
+  width: 100%; height: 100%;
+  filter: drop-shadow(0 1px 3px rgba(0,0,0,0.4));
+}
+.cert-seal-emblem {
+  position: absolute;
+  top: 28px; left: 28px;
+  width: 36px; height: 36px;
+  object-fit: contain;
+  opacity: 0.95;
+}
+
+/* ── Verification code (centered along the bottom edge, below the signatures) ── */
+.cert-verify {
+  position: absolute;
+  left: 0; right: 0; bottom: 32px;
+  display: flex; align-items: center; justify-content: center;
+  z-index: 4;
+}
+.cert-verify-code {
+  font-size: 12.5px; font-weight: 600; letter-spacing: 1px;
+  color: var(--ink-3); font-feature-settings: "tnum";
+}
+
+/* ── Inner content ── */
+.cert-inner {
+  position: relative; z-index: 2;
+  height: 100%;
+  padding: 60px 70px 100px;
+  display: flex; flex-direction: column; align-items: center;
+  box-sizing: border-box;
+}
+
+/* ── Logo ── */
+.cert-logo {
+  max-height: 94px; max-width: 330px;
+  object-fit: contain; display: block;
+}
+.cert-tagline {
+  margin-top: 14px;
+  font-size: 11.5px; font-weight: 600;
+  letter-spacing: 4.5px; text-transform: uppercase;
+  color: var(--ink-3);
+}
+
+/* ── Type label ── */
+.cert-type {
+  margin-top: 28px;
+  font-size: 12.5px; font-weight: 600;
+  letter-spacing: 5px; text-transform: uppercase;
+  color: var(--ink-3);
+}
+
+/* ── Heading ── */
+.cert-heading {
+  margin: 9px 0 0;
+  font-size: 36px; font-weight: 600;
+  letter-spacing: -1.2px; line-height: 1.05;
+  color: var(--ink); text-align: center;
+}
+
+/* ── Amount ── */
+.cert-amount {
+  margin-top: 18px;
+  font-size: 78px; font-weight: 700;
+  letter-spacing: -3.2px; line-height: 1;
+  color: #ffffff;
+  font-feature-settings: "tnum";
+  text-shadow: 0 1px 18px rgba(255,255,255,0.10);
+}
+.cert-note {
+  margin-top: 9px;
+  font-size: 14px; font-weight: 500;
+  letter-spacing: 0.4px; color: var(--ink-3);
+}
+
+/* ── Body copy ── */
+.cert-body {
+  margin: 18px 0 0;
+  font-size: 15px; font-weight: 400;
+  line-height: 1.72; color: var(--ink-2);
+  text-align: center; max-width: 620px;
+}
+.cert-body strong { color: var(--ink); font-weight: 600; }
+
+/* ── Recipient ── */
+.cert-recipient { margin-top: 20px; text-align: center; }
+.cert-recipient-name {
+  font-size: 30px; font-weight: 600;
+  letter-spacing: -0.6px; color: var(--ink);
+  line-height: 1.1;
+}
+.cert-recipient-label {
+  margin-top: 9px;
+  font-size: 11.5px; font-weight: 600;
+  letter-spacing: 3.5px; text-transform: uppercase;
+  color: var(--ink-3);
+}
+
+/* The decorative ◆ rules are hidden — restraint over ornament */
+.cert-rule, .cert-rule-bottom { display: none; }
+
+/* ── Signature row ── */
+.cert-signatures {
+  width: 100%;
+  margin-top: auto;
+  display: flex; justify-content: space-between; align-items: flex-end;
+  gap: 12px; padding: 0 8px;
+}
+.cert-sig { width: 230px; text-align: center; }
+/* signature images should be supplied white-on-transparent for the dark cert */
+.cert-sig-img {
+  height: 44px; max-width: 180px;
+  object-fit: contain; display: block; margin: 0 auto 2px;
+  opacity: 0.95;
+}
+.cert-sig-img.placeholder { height: 46px; }
+.cert-sig-line {
+  margin-top: 6px;
+  border-top: 1px solid rgba(255,255,255,0.3);
+}
+.cert-sig-name {
+  margin-top: 9px;
+  font-size: 15px; font-weight: 600; color: var(--ink);
+  letter-spacing: -0.2px;
+}
+.cert-sig-title {
+  margin-top: 4px;
+  font-size: 10.5px; font-weight: 600;
+  letter-spacing: 1.4px; text-transform: uppercase;
+  color: var(--ink-3);
+}
+
+/* ── Date (center of sig row) ── */
+.cert-date { text-align: center; padding-bottom: 1px; }
+.cert-date-value {
+  font-size: 14px; font-weight: 600;
+  color: var(--ink); letter-spacing: 0.2px;
+  border-bottom: 1px solid rgba(255,255,255,0.3);
+  padding: 0 20px 7px; white-space: nowrap;
+}
+.cert-date-label {
+  margin-top: 9px;
+  font-size: 10.5px; font-weight: 600;
+  letter-spacing: 1.6px; text-transform: uppercase;
+  color: var(--ink-3);
+}

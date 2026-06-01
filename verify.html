@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <title>Verify Certificate — Summit Securities</title>
+  <link rel="stylesheet" href="css/styles.css"/>
+  <link rel="stylesheet" href="css/certificate.css"/>
+  <link rel="icon" href="assets/monogram.png"/>
+</head>
+<body>
+  <div class="topbar">
+    <div class="brand">
+      <img src="assets/logo.png" alt="Summit Securities"/>
+      <div class="brand-sep"></div>
+      <span class="brand-sub">Certificate Portal</span>
+    </div>
+    <nav>
+      <a href="index.html">Create</a>
+      <a href="verify.html" class="active">Verify</a>
+    </nav>
+  </div>
+
+  <div class="verify-hero">
+    <h1>Certificate Verification</h1>
+    <p>Enter the unique code from any Summit Securities certificate to confirm it is genuine.</p>
+  </div>
+
+  <div class="verify-box">
+    <input id="v-code" type="text" placeholder="SS-PO-20260528-A1B2C3" autocomplete="off" autocapitalize="characters" spellcheck="false"/>
+    <button id="v-go" class="btn btn-primary">Verify</button>
+  </div>
+
+  <div id="result" class="verify-result hidden">
+    <div id="banner" class="status-banner"></div>
+    <div id="cert-stage" class="verify-cert-stage"></div>
+  </div>
+
+  <div class="footer">Summit Securities · <a href="index.html">Team portal</a></div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+  <script src="js/config.js"></script>
+  <script src="js/certificate.js"></script>
+  <script src="js/verify.js"></script>
+</body>
+</html>
