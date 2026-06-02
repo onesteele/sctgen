@@ -118,7 +118,7 @@
 
 /* ── Logo ── */
 .cert-logo {
-  max-height: 94px; max-width: 330px;
+  max-height: 130px; max-width: 440px;
   object-fit: contain; display: block;
 }
 .cert-tagline {

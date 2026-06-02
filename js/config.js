@@ -40,7 +40,7 @@ window.SUMMIT_CONFIG = {
       label: "Withdrawal Certificate",
       code: "WD",
       heading: "Certificate of Withdrawal",
-      body: "This certificate is proudly presented to {name} in recognition of a successfully processed withdrawal of {amount} from their funded trading account.",
+      body: "This certificate is proudly presented to {name} in recognition of a successfully processed withdrawal of {amount} from their live trading account.",
       accent: "#c9a227"
     },
     trade: {
